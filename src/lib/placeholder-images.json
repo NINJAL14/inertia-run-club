@@ -1,3 +1,94 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A runner silhouetted against a dramatic sunrise over a city.",
+      "imageUrl": "https://images.unsplash.com/photo-1633086707498-56e768945b57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxydW5uZXIlMjBzdW5yaXNlfGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "runner sunrise"
+    },
+    {
+      "id": "about",
+      "description": "A diverse group of runners posing for a photo, smiling.",
+      "imageUrl": "https://images.unsplash.com/photo-1602263515015-dd72f8e9f301?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxydW5uaW5nJTIwZ3JvdXB8ZW58MHx8fHwxNzcwOTkzMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "running group"
+    },
+    {
+      "id": "event1",
+      "description": "Runners participating in a morning city marathon.",
+      "imageUrl": "https://images.unsplash.com/photo-1656241490501-d8e029ee61dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMHJ1bnxlbnwwfHx8fDE3NzA5OTMyNjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city run"
+    },
+    {
+      "id": "event2",
+      "description": "A person running on a muddy trail in a forest.",
+      "imageUrl": "https://images.unsplash.com/photo-1718248028293-934f04a578db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dHJhaWwlMjBydW5uaW5nfGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "trail running"
+    },
+    {
+      "id": "event3",
+      "description": "A group of runners jogging along a path next to a lake at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1668982470129-9b2000400f06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsYWtlJTIwcnVufGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lake run"
+    },
+    {
+      "id": "update1",
+      "description": "A high-five between two runners after a race.",
+      "imageUrl": "https://images.unsplash.com/photo-1766970096331-78c8af007a3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyYWNlJTIwZmluaXNofGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "race finish"
+    },
+    {
+      "id": "gallery1",
+      "description": "A close-up of running shoes splashing through a puddle.",
+      "imageUrl": "https://images.unsplash.com/photo-1562183241-b937e95585b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwc2hvZXN8ZW58MHx8fHwxNzcwOTEwNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "running shoes"
+    },
+    {
+      "id": "gallery2",
+      "description": "A wide shot of a large group of runners at the start line of a race.",
+      "imageUrl": "https://images.unsplash.com/photo-1693411784145-85df0fc3757d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxyYWNlJTIwc3RhcnR8ZW58MHx8fHwxNzcwOTkzMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "race start"
+    },
+    {
+      "id": "gallery3",
+      "description": "A runner stretching against a scenic mountain backdrop.",
+      "imageUrl": "https://images.unsplash.com/photo-1683194613814-6929a919c1fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxydW5uZXIlMjBzdHJldGNoaW5nfGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "runner stretching"
+    },
+    {
+      "id": "gallery4",
+      "description": "A group of friends laughing and drinking water after a run.",
+      "imageUrl": "https://images.unsplash.com/photo-1574979352353-1b435061cb9c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxydW5uZXJzJTIwcmVsYXhpbmd8ZW58MHx8fHwxNzcwOTkzMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "runners relaxing"
+    },
+    {
+      "id": "gallery5",
+      "description": "An aerial view of a runner on a winding coastal road.",
+      "imageUrl": "https://images.unsplash.com/photo-1663839238784-53f284cd290e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2FzdGFsJTIwcnVufGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coastal run"
+    },
+    {
+      "id": "gallery6",
+      "description": "A runner's watch showing distance and pace.",
+      "imageUrl": "https://images.unsplash.com/photo-1729280924877-4750c0dba51e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxydW5uaW5nJTIwd2F0Y2h8ZW58MHx8fHwxNzcwOTkzMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "running watch"
+    },
+    {
+      "id": "gallery7",
+      "description": "A runner seen from behind, running towards a sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1705833935910-7c837fda49bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdW5zZXQlMjBydW58ZW58MHx8fHwxNzcwOTkzMjY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sunset run"
+    },
+    {
+      "id": "gallery8",
+      "description": "A happy runner crossing the finish line.",
+      "imageUrl": "https://images.unsplash.com/photo-1509725741166-82fabe3ac4f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmaW5pc2glMjBsaW5lfGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "finish line"
+    },
+    {
+      "id": "userAvatar",
+      "description": "Placeholder for user avatar",
+      "imageUrl": "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzA5MzM1ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    }
+  ]
 }
