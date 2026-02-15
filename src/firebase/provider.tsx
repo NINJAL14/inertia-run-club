@@ -2,9 +2,9 @@
 
 import React, { DependencyList, createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
 import { FirebaseApp } from 'firebase/app';
-import { Firestore } from 'firebase/firestore';
+import { Firestore, doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { Auth, User, onAuthStateChanged } from 'firebase/auth';
-import { FirebaseErrorListener } from '@/components/FirebaseErrorListener'
+import { FirebaseErrorListener } from '@/components/FirebaseErrorListener';
 
 interface FirebaseProviderProps {
   children: ReactNode;
@@ -88,6 +88,32 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
     );
     return () => unsubscribe(); // Cleanup
   }, [auth]); // Depends on the auth instance
+
+  // Effect to create user profile on first login
+  useEffect(() => {
+    const createUserProfile = async () => {
+      if (userAuthState.user && firestore) {
+        const user = userAuthState.user;
+        const userRef = doc(firestore, 'userProfiles', user.uid);
+        const docSnap = await getDoc(userRef);
+
+        if (!docSnap.exists()) {
+          const newUserProfile = {
+            id: user.uid,
+            email: user.email || '',
+            username: user.displayName || 'New Runner',
+            profilePhotoUrl: user.photoURL || '',
+            joinedEventIds: [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          };
+          // Not using non-blocking here to ensure profile exists before proceeding
+          await setDoc(userRef, newUserProfile);
+        }
+      }
+    };
+    createUserProfile();
+  }, [userAuthState.user, firestore]);
 
   // Memoize the context value
   const contextValue = useMemo((): FirebaseContextState => {

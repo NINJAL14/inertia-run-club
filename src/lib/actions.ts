@@ -10,31 +10,9 @@ import {
 
 // --- Authentication Actions ---
 
-const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(1, "Password is required."),
-});
-
-export async function login(values: z.infer<typeof loginSchema>) {
-  // In a real application, you would validate the credentials against a database.
-  // Here, we're using a simple check for demonstration purposes.
-  if (
-    values.email === "admin@inertia.com" &&
-    values.password === "password123"
-  ) {
-    cookies().set("inertia-auth", "true", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60 * 24 * 7, // 1 week
-      path: "/",
-    });
-    return { success: true };
-  }
-
-  return { success: false, error: "Invalid email or password." };
-}
-
 export async function logout() {
+  // This function is now primarily for the admin dashboard logout.
+  // User logout is handled client-side via Firebase.
   cookies().delete("inertia-auth");
   redirect("/login");
 }
