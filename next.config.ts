@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'content3.jdmagicbox.com',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };
