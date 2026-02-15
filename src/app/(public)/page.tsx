@@ -3,6 +3,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
+  // You can replace this with the URL of your own video
+  const videoUrl = "https://videos.pexels.com/video-files/852395/852395-hd_1920_1080_25fps.mp4";
+
   return (
     <div className="flex flex-col">
       <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
@@ -14,7 +17,7 @@ export default function HomePage() {
           className="absolute top-1/2 left-1/2 w-full h-full object-cover transform -translate-x-1/2 -translate-y-1/2 z-0"
         >
           <source
-            src="https://videos.pexels.com/video-files/852395/852395-hd_1920_1080_25fps.mp4"
+            src={videoUrl}
             type="video/mp4"
           />
           Your browser does not support the video tag.
