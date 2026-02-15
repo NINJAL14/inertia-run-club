@@ -14,9 +14,9 @@
     },
     {
       "id": "event1",
-      "description": "A scenic view of a lake with a running path, representing Vadale Lake.",
-      "imageUrl": "https://images.unsplash.com/photo-1548232983-549725e605d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsYWtlJTIwcnVufGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "lake run"
+      "description": "Scenic view of Vadale Lake in Panvel at sunset, with a fountain.",
+      "imageUrl": "https://images.unsplash.com/photo-1627894039789-568c19a2c3a3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "lake sunset"
     },
     {
       "id": "event2",
@@ -63,7 +63,7 @@
     {
       "id": "gallery5",
       "description": "An aerial view of a runner on a winding coastal road.",
-      "imageUrl": "https://images.unsplash.com/photo-1663839238784-53f284cd290e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb2FzdGFsJTIwcnVufGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1663839238784-53f284cd290e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHhjY29hc3RhbCUyMHJ1bnxlbnwwfHx8fDE3NzA5OTMyNjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "coastal run"
     },
     {
