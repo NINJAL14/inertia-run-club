@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { EventCard } from "@/components/event-card";
-import { events } from "@/lib/data";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { events, galleryImages } from "@/lib/data";
 import { Target, Users, Zap } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const values = [
     {
@@ -29,7 +29,6 @@ export default function HomePage() {
   // Place your video file in the `public` folder and update the path here.
   // For example, if your video is named `my-video.mp4`, the path would be "/my-video.mp4"
   const videoUrl = "/hero-video.mp4";
-  const aboutImage = PlaceHolderImages.find(p => p.id === 'about');
 
   return (
     <div className="flex flex-col">
@@ -123,17 +122,25 @@ export default function HomePage() {
                         <Link href="/events">See All Runs &rarr;</Link>
                     </Button>
                 </div>
-                <div className="relative h-96 w-full overflow-hidden rounded-lg shadow-xl">
-                    {aboutImage && (
-                        <Image
-                            src={aboutImage.imageUrl}
-                            alt={aboutImage.description}
-                            data-ai-hint={aboutImage.imageHint}
-                            fill
-                            className="object-cover"
-                        />
-                    )}
-                </div>
+                <Carousel className="w-full" opts={{ loop: true }}>
+                    <CarouselContent>
+                        {galleryImages.slice(0, 5).map((image) => (
+                            <CarouselItem key={image.id}>
+                                <div className="relative h-96 w-full overflow-hidden rounded-lg shadow-xl">
+                                    <Image
+                                        src={image.imageUrl}
+                                        alt={image.description}
+                                        data-ai-hint={image.imageHint}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="absolute left-4 z-10 hidden sm:flex bg-white/20 hover:bg-white/40 text-white border-0" />
+                    <CarouselNext className="absolute right-4 z-10 hidden sm:flex bg-white/20 hover:bg-white/40 text-white border-0" />
+                </Carousel>
             </div>
         </div>
       </section>
