@@ -14,9 +14,9 @@
     },
     {
       "id": "event1",
-      "description": "Runners participating in a morning city marathon.",
-      "imageUrl": "https://images.unsplash.com/photo-1656241490501-d8e029ee61dc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMHJ1bnxlbnwwfHx8fDE3NzA5OTMyNjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "city run"
+      "description": "A scenic view of a lake with a running path, representing Vadale Lake.",
+      "imageUrl": "https://images.unsplash.com/photo-1548232983-549725e605d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsYWtlJTIwcnVufGVufDB8fHx8MTc3MDk5MzI2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lake run"
     },
     {
       "id": "event2",
