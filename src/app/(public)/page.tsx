@@ -76,8 +76,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Why Join Us Section */}
       <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
+                <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                    Why Run With Inertia?
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                    We're more than a club; we're a movement. Here's what we're all about.
+                </p>
+            </div>
+            <div className="mt-12 grid max-w-lg mx-auto gap-10 lg:max-w-none lg:grid-cols-3 lg:gap-8">
+                {values.map((value) => (
+                    <div key={value.title} className="flex flex-col items-center text-center">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <value.icon className="h-8 w-8" />
+                        </div>
+                        <div className="mt-4">
+                            <h3 className="text-xl font-bold">{value.title}</h3>
+                            <p className="mt-2 text-muted-foreground">
+                                {value.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="bg-card py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
                 <div className="space-y-4">
@@ -110,7 +139,7 @@ export default function HomePage() {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="bg-card py-16 sm:py-24">
+      <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
                 <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
@@ -129,35 +158,6 @@ export default function HomePage() {
                 <Button asChild size="lg">
                     <Link href="/events">View All Events</Link>
                 </Button>
-            </div>
-        </div>
-      </section>
-
-      {/* Why Join Us Section */}
-      <section className="py-16 sm:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
-                <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
-                    Why Run With Inertia?
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                    We're more than a club; we're a movement. Here's what we're all about.
-                </p>
-            </div>
-            <div className="mt-12 grid max-w-lg mx-auto gap-10 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-                {values.map((value) => (
-                    <div key={value.title} className="flex flex-col items-center text-center">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                            <value.icon className="h-8 w-8" />
-                        </div>
-                        <div className="mt-4">
-                            <h3 className="text-xl font-bold">{value.title}</h3>
-                            <p className="mt-2 text-muted-foreground">
-                                {value.description}
-                            </p>
-                        </div>
-                    </div>
-                ))}
             </div>
         </div>
       </section>
