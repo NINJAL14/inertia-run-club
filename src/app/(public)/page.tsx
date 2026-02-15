@@ -5,6 +5,7 @@ import { EventCard } from "@/components/event-card";
 import { events } from "@/lib/data";
 import { Target, Users, Zap } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const values = [
     {
@@ -26,23 +27,38 @@ const values = [
 
 
 export default function HomePage() {
-  // Place your video file in the `public` folder and update the path here.
-  // For example, if your video is named `my-video.mp4`, the path would be "/my-video.mp4"
-  const videoUrl = "/hero-video.mp4";
+  const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
 
-  // Assumes your images are in `public/imge` and are named image1.jpg, image2.jpg, etc.
-  // Please update the `imageUrl` with the correct file paths.
+  // I've replaced the local image paths with placeholders.
+  // To use your own images, place them in the `public/imge` folder
+  // and update the `imageUrl` paths below to match, e.g., "/imge/your-image-name.jpg".
   const sundayRunImages = [
-    { id: 'sunday-run-1', imageUrl: '/imge/image1.jpg', description: 'Inertia run club members running together on a sunny morning.', imageHint: 'runners group' },
-    { id: 'sunday-run-2', imageUrl: '/imge/image2.jpg', description: 'A scenic view from the Sunday run path.', imageHint: 'scenic view' },
-    { id: 'sunday-run-3', imageUrl: '/imge/image3.jpg', description: 'Runners warming up and stretching before the event.', imageHint: 'runners warming up' },
-    { id: 'sunday-run-4', imageUrl: '/imge/image4.jpg', description: 'A picture of the beautiful running trail.', imageHint: 'running trail' },
-    { id: 'sunday-run-5', imageUrl: '/imge/image5.jpg', description: 'Club members celebrating after a successful run.', imageHint: 'runners celebrating' },
+    { id: 'sunday-run-1', imageUrl: 'https://picsum.photos/seed/sunday-run-1/800/600', description: 'Inertia run club members running together on a sunny morning.', imageHint: 'runners group' },
+    { id: 'sunday-run-2', imageUrl: 'https://picsum.photos/seed/sunday-run-2/800/600', description: 'A scenic view from the Sunday run path.', imageHint: 'scenic view' },
+    { id: 'sunday-run-3', imageUrl: 'https://picsum.photos/seed/sunday-run-3/800/600', description: 'Runners warming up and stretching before the event.', imageHint: 'runners warming up' },
+    { id: 'sunday-run-4', imageUrl: 'https://picsum.photos/seed/sunday-run-4/800/600', description: 'A picture of the beautiful running trail.', imageHint: 'running trail' },
+    { id: 'sunday-run-5', imageUrl: 'https://picsum.photos/seed/sunday-run-5/800/600', description: 'Club members celebrating after a successful run.', imageHint: 'runners celebrating' },
   ];
 
   return (
     <div className="flex flex-col">
       <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
+        {/*
+          The video file was missing, so I've replaced it with a static background image.
+          To use a video, uncomment the <video> tag below and make sure your
+          video file (e.g., "hero-video.mp4") is in the `public` folder.
+        */}
+        {heroImage && (
+            <Image
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                data-ai-hint={heroImage.imageHint}
+                fill
+                className="object-cover"
+                priority
+            />
+        )}
+        {/*
         <video
           autoPlay
           loop
@@ -51,11 +67,12 @@ export default function HomePage() {
           className="absolute inset-0 z-0 h-full w-full object-cover"
         >
           <source
-            src={videoUrl}
+            src="/hero-video.mp4"
             type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
+        */}
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex flex-col items-center justify-center text-center text-white p-4">
           <h1 className="font-headline font-extrabold italic tracking-tighter text-primary flex flex-col text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
