@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const cards = [
     {
@@ -8,6 +10,24 @@ const cards = [
     {
         title: 'VISION',
         description: "To become the heartbeat of the Panvel fitness community. We envision a city connected by footprints, where every intersection in Panvel is a meeting point and every finish line is just a new beginning for our local crew."
+    }
+];
+
+const crewMembers = [
+    {
+        name: 'Jane Doe',
+        role: 'Co-Founder & Pace Setter',
+        image: PlaceHolderImages.find(p => p.id === 'crew1')
+    },
+    {
+        name: 'John Smith',
+        role: 'Head Coach & Motivator',
+        image: PlaceHolderImages.find(p => p.id === 'crew2')
+    },
+    {
+        name: 'Emily White',
+        role: 'Community Manager & Vibe Curator',
+        image: PlaceHolderImages.find(p => p.id === 'crew3')
     }
 ]
 
@@ -35,6 +55,36 @@ export default function AboutPage() {
                         </CardContent>
                     </Card>
                 ))}
+            </div>
+
+            <div className="mt-24">
+                <div className="mx-auto max-w-4xl text-center">
+                    <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                        Meet the Crew
+                    </h2>
+                    <p className="mt-4 text-xl text-muted-foreground">
+                        The people who keep the momentum going.
+                    </p>
+                </div>
+                <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-12">
+                    {crewMembers.map((member) => (
+                       member.image && (
+                        <div key={member.name} className="flex flex-col items-center text-center">
+                            <div className="relative h-48 w-48 rounded-full overflow-hidden shadow-lg">
+                                <Image
+                                    src={member.image.imageUrl}
+                                    alt={`Portrait of ${member.name}`}
+                                    data-ai-hint={member.image.imageHint}
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            <h3 className="mt-6 text-xl font-bold text-foreground">{member.name}</h3>
+                            <p className="text-md text-primary">{member.role}</p>
+                        </div>
+                       )
+                    ))}
+                </div>
             </div>
         </div>
     );
