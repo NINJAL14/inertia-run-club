@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -24,7 +23,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setSheetOpen] = React.useState(false);
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -42,7 +41,7 @@ export function Header() {
             height={40}
             className="rounded-full"
           />
-          <span className="hidden sm:inline text-lg font-bold uppercase tracking-wider">Inertia Run Club</span>
+          <span className="hidden sm:inline font-logo text-xl uppercase tracking-wider">Inertia Run Club</span>
         </Link>
         
         <div className="hidden items-center gap-8 md:flex">
@@ -97,7 +96,7 @@ export function Header() {
                             height={40}
                             className="rounded-full"
                         />
-                        <span className="font-bold uppercase tracking-wider">Inertia Run Club</span>
+                        <span className="font-logo text-xl uppercase tracking-wider">Inertia Run Club</span>
                     </Link>
                     <div className="my-8 flex flex-col space-y-5 pl-6">
                         {navItems.map((item) => (

@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         headline: ['Oswald', 'sans-serif'],
+        logo: ['"Barbra Semicondensed"', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
