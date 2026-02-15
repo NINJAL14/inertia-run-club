@@ -1,0 +1,189 @@
+/**
+ * Core Philosophy: This ruleset implements a mixed security model for the Inertia Run Club app.
+ * User-specific data is strictly private and owner-controlled, while community content like
+ * events and weekly updates are publicly readable by authenticated users but managed exclusively
+ * by administrators.
+ *
+ * Data Structure:
+ * - /userProfiles/{userId}: Private, user-owned documents. The document ID must match the user's UID.
+ * - /events/{eventId}: Publicly readable event information. Writes are admin-only, with a special
+ *   exception for users to join or leave an event.
+ * - /weeklyUpdates/{updateId}: Publicly readable club news. Writes are admin-only.
+ * - /roles_admin/{adminId}: A Database Access Control (DBAC) collection where the existence of a
+ *   document signifies a user has administrative privileges.
+ *
+ * Key Security Decisions:
+ * - Admin roles are managed via the existence of a document in `/roles_admin`, enabling fast and
+ *   cost-effective `exists()` checks instead of slower `get()` calls.
+ * - User enumeration is disallowed by disabling `list` access on the `/userProfiles` collection.
+ * - A user can join or leave an event by modifying the `participantIds` array on an event document.
+ *   This is a controlled update that prevents any other field from being changed simultaneously.
+ * - Default posture is to deny all access. Authenticated users are granted specific read and
+ *   controlled write permissions. Unauthenticated users have no access.
+ *
+ * Denormalization for Authorization:
+ * This ruleset relies on denormalization for efficient security. The `participantIds` array on
+ * each event document avoids costly lookups to determine access. The entire `/roles_admin`
+ * collection is a denormalization pattern that makes role-based access simple and performant.
+ *
+ * Structural Segregation:
+ * The separation of private data (`/userProfiles`) from public data (`/events`, `/weeklyUpdates`)
+ * creates a clean and secure structure. This prevents accidental data leakage and simplifies
+ * the rules for listing collections, as all documents within `/events` and `/weeklyUpdates`
+ * share the same public-read security posture.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ----------------------------------------------------------------------
+    // Helper Functions
+    // ----------------------------------------------------------------------
+
+    /**
+     * Checks if the user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the requesting user's UID matches the provided userId.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * Checks if a document exists and if the user is the owner.
+     * Used for safe update and delete operations on user-owned documents.
+     */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    /**
+     * Checks if the user has an admin role by verifying document existence.
+     * This is a performant way to check roles without a full document read.
+     */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /**
+     * Checks if a document exists. For use in state-changing operations.
+     */
+    function isExistingDocument() {
+      return resource != null;
+    }
+
+    /**
+     * Checks if an admin is performing an operation on an existing document.
+     * Used for safe updates and deletes on admin-controlled collections.
+     */
+    function isExistingAdmin() {
+      return isAdmin() && isExistingDocument();
+    }
+
+    /**
+     * On create, validates that the user is setting their own UID as the document's 'id'.
+     * This enforces relational integrity between the path and the data.
+     */
+    function isCreatingOwnProfile(userId) {
+      return isOwner(userId) && request.resource.data.id == userId;
+    }
+
+    /**
+     * On update, ensures the document's 'id' field cannot be changed.
+     * Protects the immutable link between the document data and its owner.
+     */
+    function hasImmutableId() {
+      return request.resource.data.id == resource.data.id;
+    }
+
+    /**
+     * Validates if a user is only adding or removing their own UID from the
+     * `participantIds` array, without changing any other event fields.
+     */
+    function isModifyingOwnParticipation() {
+      let isOnlyAffectingParticipants = request.resource.data.diff(resource.data).affectedKeys().hasOnly(['participantIds']);
+      let beforeIds = resource.data.participantIds;
+      let afterIds = request.resource.data.participantIds;
+      let userId = request.auth.uid;
+
+      // Case 1: User is joining the event
+      let isJoining = afterIds == beforeIds.concat([userId]);
+      // Case 2: User is leaving the event
+      let isLeaving = beforeIds == afterIds.concat([userId]);
+
+      return isOnlyAffectingParticipants && (isJoining || isLeaving);
+    }
+
+
+    // ----------------------------------------------------------------------
+    // Collection Rules
+    // ----------------------------------------------------------------------
+
+    /**
+     * @description Controls access to a user's private profile.
+     * @path /userProfiles/{userId}
+     * @allow (create) An authenticated user creating their own profile document.
+     * @deny (get) An authenticated user trying to read another user's profile.
+     * @principle Restricts access to a user's own data tree and enforces ownership.
+     */
+    match /userProfiles/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false; // Prevent user enumeration
+      allow create: if isCreatingOwnProfile(userId);
+      allow update: if isExistingOwner(userId) && hasImmutableId();
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Manages public running club events.
+     * @path /events/{eventId}
+     * @allow (get) Any authenticated user reading event details.
+     * @allow (update) An admin changing the event title OR a regular user adding their UID to `participantIds`.
+     * @deny (create) A regular user trying to create a new event.
+     * @deny (update) A regular user trying to change the event date AND join the event in the same request.
+     * @principle Provides public read access while restricting writes to admins, with a specific, secure exception for user participation.
+     */
+    match /events/{eventId} {
+      allow get: if isSignedIn();
+      allow list: if isSignedIn();
+      allow create: if isAdmin();
+      allow update: if isExistingDocument() && (isAdmin() || isModifyingOwnParticipation());
+      allow delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description Manages weekly updates, which are publicly readable but admin-controlled.
+     * @path /weeklyUpdates/{updateId}
+     * @allow (list) Any authenticated user listing all weekly updates.
+     * @deny (update) A regular user attempting to modify a weekly update post.
+     * @principle Enforces a "public read, admin write" content model.
+     */
+    match /weeklyUpdates/{updateId} {
+      allow get: if isSignedIn();
+      allow list: if isSignedIn();
+      allow create: if isAdmin();
+      allow update: if isExistingAdmin();
+      allow delete: if isExistingAdmin();
+    }
+
+    /**
+     * @description A DBAC collection where document existence grants admin rights.
+     * @path /roles_admin/{adminId}
+     * @allow (get) An admin reading another admin's role document.
+     * @deny (list) A non-admin user trying to list all administrators.
+     * @principle Secures the role-granting mechanism itself, restricting modifications to other admins.
+     */
+    match /roles_admin/{adminId} {
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+      allow create: if isAdmin();
+      allow update: if isExistingAdmin();
+      allow delete: if isExistingAdmin();
+    }
+  }
+}

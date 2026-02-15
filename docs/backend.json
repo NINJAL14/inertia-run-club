@@ -1,0 +1,274 @@
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user of the Inertia Run Club application, allowing them to log in via Gmail, set a username, and add a profile photo. Users must have a profile to join events.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email address, obtained through Gmail login. This serves as a unique identifier for the user.",
+          "format": "email"
+        },
+        "username": {
+          "type": "string",
+          "description": "A user-chosen display name for their profile."
+        },
+        "profilePhotoUrl": {
+          "type": "string",
+          "description": "URL to the user's profile photo, stored on Cloudinary.",
+          "format": "uri"
+        },
+        "joinedEventIds": {
+          "type": "array",
+          "description": "References to Events that this user has joined. (Relationship: UserProfile N:N Event)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the user profile was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the user profile was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "username",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Event": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Event",
+      "type": "object",
+      "description": "Represents a running club event, including details like date, time, location, and associated images. Users can join these events.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Event entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the event."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the event."
+        },
+        "date": {
+          "type": "string",
+          "description": "The date on which the event will take place.",
+          "format": "date"
+        },
+        "time": {
+          "type": "string",
+          "description": "The time at which the event will start or occur."
+        },
+        "location": {
+          "type": "string",
+          "description": "The physical location where the event will be held."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to an image associated with the event, stored on Cloudinary.",
+          "format": "uri"
+        },
+        "participantIds": {
+          "type": "array",
+          "description": "References to UserProfiles who have joined this event. (Relationship: Event N:N UserProfile)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the event was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the event was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "date",
+        "time",
+        "location",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "WeeklyUpdate": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "WeeklyUpdate",
+      "type": "object",
+      "description": "Represents a weekly update post from the running club, often including content and an optional image.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the WeeklyUpdate entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the weekly update."
+        },
+        "content": {
+          "type": "string",
+          "description": "The main content or body of the weekly update."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Optional URL to an image associated with the update, stored on Cloudinary.",
+          "format": "uri"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the weekly update was posted.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the weekly update was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AdminUser": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AdminUser",
+      "type": "object",
+      "description": "Represents an administrative user who has access to the backend dashboard for managing events and updates. Authentication details (like hashed passwords) are managed by an external system for security.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the AdminUser entity."
+        },
+        "username": {
+          "type": "string",
+          "description": "The administrative user's chosen username."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the administrative user.",
+          "format": "email"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the admin user was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the admin user was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "username",
+        "email",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/userProfiles/{userId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores private user profile data including username, profile photo URL, and a list of IDs of events the user has joined. Only the authenticated user (matching 'request.auth.uid') can read or write their own profile. The 'id' field within the document must match the 'userId' path parameter.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The Firebase Authentication UID of the user, serving as the document ID."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/events/{eventId}",
+        "definition": {
+          "entityName": "Event",
+          "schema": {
+            "$ref": "#/backend/entities/Event"
+          },
+          "description": "Stores public details for running club events, including title, description, date, location, and an optional image. It also contains a denormalized list ('participantIds') of user UIDs who have joined the event. All authenticated users can read events. Only authenticated administrators (determined by presence in '/roles_admin/{adminId}') can create, update, or delete events. Authenticated users can modify the 'participantIds' array to add/remove their own UID for joining/unjoining an event, provided other event fields remain unchanged.",
+          "params": [
+            {
+              "name": "eventId",
+              "description": "Unique identifier for the event, serving as the document ID."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/weeklyUpdates/{updateId}",
+        "definition": {
+          "entityName": "WeeklyUpdate",
+          "schema": {
+            "$ref": "#/backend/entities/WeeklyUpdate"
+          },
+          "description": "Contains weekly news and updates from the running club, including title, content, and an optional image. All authenticated users can read these updates. Only authenticated administrators (determined by presence in '/roles_admin/{adminId}') can create, update, or delete updates.",
+          "params": [
+            {
+              "name": "updateId",
+              "description": "Unique identifier for the weekly update, serving as the document ID."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{adminId}",
+        "definition": {
+          "entityName": "AdminUser",
+          "schema": {
+            "$ref": "#/backend/entities/AdminUser"
+          },
+          "description": "A collection used for Database Access Control (DBAC) to designate administrative users. The existence of a document at this path where 'adminId' matches a user's 'request.auth.uid' grants administrative privileges in Firestore rules. This allows authorization without custom claims or 'get()' calls, relying purely on document existence. Access to this collection itself should be highly restricted (e.g., only by other admins or trusted server-side processes).",
+          "params": [
+            {
+              "name": "adminId",
+              "description": "The Firebase Authentication UID of an administrator, serving as the document ID."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure for Inertia Run Club Central is designed to prioritize authorization independence, structural segregation, and clear access modeling, as per the core design principles.\n\n**Authorization Independence and Denormalization:**\n\n1.  **UserProfile:** User profiles are stored at `/userProfiles/{userId}`. The `userId` in the path directly corresponds to `request.auth.uid`. This path-based ownership makes authorization rules extremely simple: `allow read, write: if request.auth.uid == userId;`. The user's `id` field within the document is denormalized to match the document ID, ensuring data consistency and self-contained authorization context. The `joinedEventIds` array, though representing a many-to-many relationship, is contained within the user's document, eliminating the need for `get()` calls to other documents for authorization related to a user's own profile.\n\n2.  **Events & WeeklyUpdates:** These entities (`/events/{eventId}` and `/weeklyUpdates/{updateId}`) are publicly readable. Their write access is governed by the `admin` role, which is independently checked via an `exists()` call on the `/roles_admin/{adminId}` collection. This avoids `get()` calls and maintains authorization independence. For users joining events, the `participantIds` array within the `Event` document, and `joinedEventIds` within the `UserProfile` document, are updated in a client-side transaction. While updating arrays in security rules can be complex, the rules *can* be written to ensure a user only adds/removes their own UID to these arrays without needing to fetch other documents for authorization. This design choice adheres to the provided entity schemas which explicitly include these arrays.\n\n3.  **Admin Roles:** The `/roles_admin/{adminId}` collection is a pure DBAC (Database Access Control) mechanism. The mere existence of a document with `request.auth.uid` as its ID in this collection grants administrative privileges. This is the epitome of authorization independence, as it requires only `exists('/roles_admin/' + request.auth.uid)` in rules, completely avoiding `get()` calls.\n\n**Structural Segregation (Homogeneous Security Posture):**\n\n*   `/userProfiles/{userId}`: All documents have the same security posture – only the owner can read/write.\n*   `/events/{eventId}`: All documents are publicly readable, and admin-writable. This clear segregation simplifies rules.\n*   `/weeklyUpdates/{updateId}`: Similar to events, all documents are publicly readable and admin-writable.\n*   `/roles_admin/{adminId}`: All documents define an admin role, with very restricted write access (e.g., only other admins or trusted server processes) and read access for rule evaluation.\n\n**Query Access Patterns (QAPs):**\n\n*   **Listing Events/Updates:** The `/events` and `/weeklyUpdates` collections allow secure `list` operations for all authenticated users, as they are publicly readable. Rules will ensure only admins can modify them, preventing unauthorized data manipulation during reads.\n*   **User Profile Access:** Direct `get` by `userId` is the primary access pattern, ensuring users only retrieve their own data.\n*   **Event Participation:** While the `participantIds` and `joinedEventIds` arrays mean `array-contains` queries for reverse lookups (e.g., finding all events a specific user has joined across *all* events, or vice-versa across *all* users) might require collection group queries (if using a different model) or be less efficient for large datasets, the design supports direct retrieval of participants for a given event, or joined events for a given user, via a simple document `get` operation. The security rules will permit the necessary modifications for joining/unjoining events directly in these arrays, ensuring that users can only affect their own participation status.\n\nOverall, this structure provides a robust foundation for security rules by making authorization logic self-contained within the document or directly linked to the authenticated user's UID, minimizing dependencies and enhancing debuggability."
+  }
+}
