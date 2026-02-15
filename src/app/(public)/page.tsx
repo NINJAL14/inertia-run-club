@@ -27,8 +27,6 @@ const values = [
 
 
 export default function HomePage() {
-  const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
-
   // I've replaced the local image paths with placeholders.
   // To use your own images, place them in the `public/imge` folder
   // and update the `imageUrl` paths below to match, e.g., "/imge/your-image-name.jpg".
@@ -44,21 +42,10 @@ export default function HomePage() {
     <div className="flex flex-col">
       <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden">
         {/*
-          The video file was missing, so I've replaced it with a static background image.
-          To use a video, uncomment the <video> tag below and make sure your
-          video file (e.g., "hero-video.mp4") is in the `public` folder.
+          I've restored the hero video background.
+          For this to work, you'll need to make sure you have a video file
+          named "hero-video.mp4" in your `public` folder.
         */}
-        {heroImage && (
-            <Image
-                src={heroImage.imageUrl}
-                alt={heroImage.description}
-                data-ai-hint={heroImage.imageHint}
-                fill
-                className="object-cover"
-                priority
-            />
-        )}
-        {/*
         <video
           autoPlay
           loop
@@ -72,7 +59,6 @@ export default function HomePage() {
           />
           Your browser does not support the video tag.
         </video>
-        */}
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex flex-col items-center justify-center text-center text-white p-4">
           <h1 className="font-headline font-extrabold italic tracking-tighter text-primary flex flex-col text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
