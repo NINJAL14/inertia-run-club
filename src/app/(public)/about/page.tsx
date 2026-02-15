@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target, Users, Zap } from 'lucide-react';
 
 const cards = [
     {
@@ -14,19 +13,20 @@ const cards = [
 
 const values = [
     {
-        icon: Users,
-        title: 'Community',
-        description: 'We foster a welcoming and inclusive environment for runners of all levels.',
+        title: 'GRIT',
+        description: 'Embrace the discomfort.',
     },
     {
-        icon: Zap,
-        title: 'Performance',
-        description: 'We support each other in achieving personal fitness goals, from 5ks to marathons.',
+        title: 'PACE',
+        description: 'Yours. Not theirs.',
     },
     {
-        icon: Target,
-        title: 'Persistence',
-        description: 'We believe in the power of consistency and the mental strength built through running.',
+        title: 'CREW',
+        description: 'Leave no one behind.',
+    },
+    {
+        title: 'VIBE',
+        description: 'Bring the energy.',
     }
 ];
 
@@ -58,27 +58,21 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-24">
-                <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
-                    <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
-                        Our Core Values
+                <div className="mx-auto max-w-4xl text-center">
+                    <h2 className="text-3xl font-extrabold tracking-widest text-primary sm:text-4xl uppercase">
+                        Club Values
                     </h2>
-                    <p className="mt-4 text-lg text-muted-foreground">
-                        We're more than a club; we're a movement. Here's what we're all about.
-                    </p>
                 </div>
-                <div className="mt-12 grid max-w-lg mx-auto gap-10 lg:max-w-none lg:grid-cols-3 lg:gap-8">
+                <div className="mt-12 grid max-w-5xl mx-auto gap-8 sm:grid-cols-2 lg:grid-cols-4">
                     {values.map((value) => (
-                        <div key={value.title} className="flex flex-col items-center text-center">
-                            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                <value.icon className="h-8 w-8" />
-                            </div>
-                            <div className="mt-4">
-                                <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
-                                <p className="mt-2 text-muted-foreground">
-                                    {value.description}
-                                </p>
-                            </div>
-                        </div>
+                        <Card key={value.title} className="bg-card/50 border-border/40 text-center">
+                            <CardHeader>
+                                <CardTitle className="text-2xl font-bold tracking-wider uppercase text-primary">{value.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-lg text-muted-foreground">{value.description}</p>
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
             </div>
