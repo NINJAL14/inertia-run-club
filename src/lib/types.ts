@@ -29,5 +29,4 @@ export type TeamMember = {
   name: string;
   role: string;
   image: string;
-  imageHint: string;
 };

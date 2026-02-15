@@ -21,7 +21,6 @@ export default function GalleryPage() {
                 <Image
                     src={member.image}
                     alt={`Portrait of ${member.name}`}
-                    data-ai-hint={member.imageHint}
                     fill
                     className="object-cover"
                 />

@@ -55,22 +55,19 @@ export const teamMembers: TeamMember[] = [
     id: "akshitRanjith",
     name: "Akshit Ranjith",
     role: "President & Co-Founder",
-    image: PlaceHolderImages.find(p => p.id === "akshitRanjith")!.imageUrl,
-    imageHint: PlaceHolderImages.find(p => p.id === "akshitRanjith")!.imageHint,
+    image: "/images/team/akshit-ranjith.jpg",
   },
   {
-    id: "crew1",
+    id: "janeDoe",
     name: "Jane Doe",
     role: "Vice President",
-    image: PlaceHolderImages.find(p => p.id === "crew1")!.imageUrl,
-    imageHint: PlaceHolderImages.find(p => p.id === "crew1")!.imageHint,
+    image: "/images/team/jane-doe.jpg",
   },
   {
-    id: "crew2",
+    id: "johnSmith",
     name: "John Smith",
     role: "Community Manager",
-    image: PlaceHolderImages.find(p => p.id === "crew2")!.imageUrl,
-    imageHint: PlaceHolderImages.find(p => p.id === "crew2")!.imageHint,
+    image: "/images/team/john-smith.jpg",
   }
 ];
 

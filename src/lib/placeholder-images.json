@@ -85,34 +85,10 @@
       "imageHint": "finish line"
     },
     {
-      "id": "akshitRanjith",
-      "description": "Portrait of Akshit Ranjith",
-      "imageUrl": "https://images.unsplash.com/photo-1615109398623-88346a601842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmRpYW4lMjBtYW58ZW58MHx8fHwxNzcxMTQwODU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "indian man"
-    },
-    {
       "id": "userAvatar",
       "description": "Placeholder for user avatar",
       "imageUrl": "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzA5MzM1ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "person portrait"
-    },
-    {
-      "id": "crew1",
-      "description": "Portrait of a female runner.",
-      "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "imageHint": "female runner"
-    },
-    {
-      "id": "crew2",
-      "description": "Portrait of a male runner.",
-      "imageUrl": "https://images.unsplash.com/photo-1534368959876-26284db94183?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "imageHint": "male runner"
-    },
-    {
-      "id": "crew3",
-      "description": "Portrait of a smiling runner.",
-      "imageUrl": "https://images.unsplash.com/photo-1587628678942-137f6a39499e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "imageHint": "runner smiling"
     }
   ]
 }
