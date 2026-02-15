@@ -4,11 +4,11 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 export const events: Event[] = [
   {
     id: "1",
-    title: "Sunrise City Run",
-    description: "Join us for a refreshing 5k run through the city center as the sun comes up. All paces welcome!",
-    date: "2024-08-15",
+    title: "Sunday Run",
+    description: "3km to 5km run from vadale lake panvel",
+    date: "2026-02-22",
     time: "06:00 AM",
-    location: "Downtown Plaza",
+    location: "Vadale Lake Panvel",
     image: PlaceHolderImages.find(p => p.id === "event1")!.imageUrl,
     createdAt: "2024-07-20T10:00:00Z",
   },
