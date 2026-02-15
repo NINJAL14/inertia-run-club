@@ -23,7 +23,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setSheetOpen] = React.useState(false);
-  const { user, isUserLoading } = useUser();
+  const { user } = useUser();
   const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,7 +31,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3 text-lg font-bold uppercase tracking-wider">
           <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:invert" />
@@ -55,16 +55,15 @@ export function Header() {
               </Link>
             ))}
           </nav>
-
-          {isMounted && !isUserLoading && (
-            user ? (
-              <UserButton />
-            ) : (
-              <Button asChild>
-                <Link href="/login">Login</Link>
-              </Button>
-            )
-          )}
+            {isMounted && (
+                user ? (
+                <UserButton />
+                ) : (
+                <Button asChild>
+                    <Link href="/login">Login</Link>
+                </Button>
+                )
+            )}
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -99,8 +98,7 @@ export function Header() {
                             {item.label}
                         </Link>
                         ))}
-                        {!isUserLoading && (
-                          <div className="mt-4">
+                        <div className="mt-4">
                             {user ? (
                                <UserButton />
                             ) : (
@@ -108,12 +106,11 @@ export function Header() {
                                 <Link href="/login" onClick={() => setSheetOpen(false)}>Login</Link>
                               </Button>
                             )}
-                          </div>
-                        )}
+                        </div>
                     </div>
                     </SheetContent>
                 </Sheet>
-                {!isUserLoading && user && <UserButton />}
+                {user && <UserButton />}
               </>
             )}
         </div>
