@@ -48,7 +48,7 @@ export default function HomePage() {
         </video>
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 flex flex-col items-center justify-center text-center text-white p-4">
-          <h1 className="font-headline font-extrabold tracking-tighter text-primary flex flex-col text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
+          <h1 className="font-headline font-extrabold italic tracking-tighter text-primary flex flex-col text-5xl sm:text-7xl md:text-8xl lg:text-9xl">
             <span className="block animate-reveal [animation-fill-mode:backwards]">MOMENTUM</span>
             <span className="block animate-reveal [animation-fill-mode:backwards] [animation-delay:200ms]">IS</span>
             <span className="block animate-reveal [animation-fill-mode:backwards] [animation-delay:400ms]">EVERYTHING</span>
