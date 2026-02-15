@@ -104,13 +104,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sunday Morning Run Section */}
+      {/* Sunday Morning Runs Section */}
       <section className="bg-card py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
                 <div className="space-y-4">
                     <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
-                        Sunday Morning Run
+                        Sunday Morning Runs
                     </h2>
                     <p className="mt-4 text-lg text-muted-foreground">
                         Every Sunday, we hit the pavement for our flagship group run. It's the perfect way to kick off your week, with routes for all levels and a great community vibe. Whether you're chasing a new personal best or just looking for a friendly jog, you'll find your pace with us.
