@@ -5,7 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { Footprints, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -70,7 +71,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
           <div className="mb-4 flex justify-center">
-            <Footprints className="h-10 w-10 text-primary" />
+            <Image src="/logo.png" alt="Inertia Logo" width={150} height={65} />
           </div>
           <CardTitle className="text-2xl">Admin Login</CardTitle>
           <CardDescription>

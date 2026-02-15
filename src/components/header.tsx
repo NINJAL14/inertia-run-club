@@ -3,7 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Footprints, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -25,9 +26,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-md shadow-primary/10">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Footprints className="h-6 w-6 text-primary" />
-            <span className="font-bold">Inertia Run Club</span>
+          <Link href="/" className="mr-6 flex items-center">
+            <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} />
           </Link>
           <nav className="hidden items-center gap-6 text-sm md:flex">
             {navItems.map((item) => (
@@ -58,9 +58,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
-              <Link href="/" className="mr-6 flex items-center space-x-2">
-                <Footprints className="h-6 w-6 text-primary" />
-                <span className="font-bold">Inertia Run Club</span>
+              <Link href="/" className="mr-6 flex items-center">
+                <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} />
               </Link>
               <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                 <div className="flex flex-col space-y-3">

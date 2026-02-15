@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import Image from "next/image";
 import {
   Calendar,
   Home,
   Newspaper,
   Sparkles,
-  Footprints,
 } from "lucide-react";
 
 import {
@@ -21,7 +21,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { UserNav } from "@/components/user-nav";
-import { Button } from "@/components/ui/button";
 
 const menuItems = [
   { icon: Home, label: "Dashboard", href: "/dashboard" },
@@ -46,13 +45,10 @@ export default function DashboardLayout({
     <SidebarProvider>
       <Sidebar>
         <SidebarHeader>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="/">
-                <Footprints className="h-6 w-6 text-primary" />
-              </Link>
-            </Button>
-            <h2 className="text-lg font-semibold tracking-tight">Inertia</h2>
+          <div className="flex items-center justify-center p-2">
+            <Link href="/">
+              <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} />
+            </Link>
           </div>
         </SidebarHeader>
         <SidebarContent>
