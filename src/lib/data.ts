@@ -58,10 +58,10 @@ export const teamMembers: TeamMember[] = [
     image: "https://media.licdn.com/dms/image/v2/D4D22AQGPcjFbOpG17w/feedshare-shrink_1280/B4DZqLx0TZJcAw-/0/1763281684454?e=1772668800&v=beta&t=LjRr8lhcpB4ATlDtuK4pdoukvcA6ikuV7RTtPvxQqnk",
   },
   {
-    id: "janeDoe",
-    name: "Jane Doe",
+    id: "siddheshRane",
+    name: "Siddhesh Rane",
     role: "Vice President",
-    image: PlaceHolderImages.find(p => p.id === "team_jane")!.imageUrl,
+    image: "https://media.licdn.com/dms/image/v2/D4D22AQGYiMUb5Nf0wQ/feedshare-shrink_800/B4DZqL1FCeGQAg-/0/1763282539319?e=1772668800&v=beta&t=CdYvbYLstT__s9aV1_h7xc-B-FmMlzW0FSgyv2eTik0",
   },
   {
     id: "johnSmith",
