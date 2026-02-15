@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Target, Users, Zap } from 'lucide-react';
 
 const cards = [
     {
@@ -13,23 +12,24 @@ const cards = [
     }
 ];
 
-const crewMembers = [
+const values = [
     {
-        name: 'Jane Doe',
-        role: 'Co-Founder & Pace Setter',
-        image: PlaceHolderImages.find(p => p.id === 'crew1')
+        icon: Users,
+        title: 'Community',
+        description: 'We foster a welcoming and inclusive environment for runners of all levels.',
     },
     {
-        name: 'John Smith',
-        role: 'Head Coach & Motivator',
-        image: PlaceHolderImages.find(p => p.id === 'crew2')
+        icon: Zap,
+        title: 'Performance',
+        description: 'We support each other in achieving personal fitness goals, from 5ks to marathons.',
     },
     {
-        name: 'Emily White',
-        role: 'Community Manager & Vibe Curator',
-        image: PlaceHolderImages.find(p => p.id === 'crew3')
+        icon: Target,
+        title: 'Persistence',
+        description: 'We believe in the power of consistency and the mental strength built through running.',
     }
-]
+];
+
 
 export default function AboutPage() {
     return (
@@ -58,31 +58,27 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-24">
-                <div className="mx-auto max-w-4xl text-center">
+                <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
                     <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
-                        Meet the Crew
+                        Our Core Values
                     </h2>
-                    <p className="mt-4 text-xl text-muted-foreground">
-                        The people who keep the momentum going.
+                    <p className="mt-4 text-lg text-muted-foreground">
+                        We're more than a club; we're a movement. Here's what we're all about.
                     </p>
                 </div>
-                <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-12">
-                    {crewMembers.map((member) => (
-                       member.image && (
-                        <div key={member.name} className="flex flex-col items-center text-center">
-                            <div className="relative h-48 w-48 rounded-full overflow-hidden shadow-lg">
-                                <Image
-                                    src={member.image.imageUrl}
-                                    alt={`Portrait of ${member.name}`}
-                                    data-ai-hint={member.image.imageHint}
-                                    fill
-                                    className="object-cover"
-                                />
+                <div className="mt-12 grid max-w-lg mx-auto gap-10 lg:max-w-none lg:grid-cols-3 lg:gap-8">
+                    {values.map((value) => (
+                        <div key={value.title} className="flex flex-col items-center text-center">
+                            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                                <value.icon className="h-8 w-8" />
                             </div>
-                            <h3 className="mt-6 text-xl font-bold text-foreground">{member.name}</h3>
-                            <p className="text-md text-primary">{member.role}</p>
+                            <div className="mt-4">
+                                <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
+                                <p className="mt-2 text-muted-foreground">
+                                    {value.description}
+                                </p>
+                            </div>
                         </div>
-                       )
                     ))}
                 </div>
             </div>
