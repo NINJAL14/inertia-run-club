@@ -1,11 +1,35 @@
 import Link from "next/link";
-
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { EventCard } from "@/components/event-card";
+import { events } from "@/lib/data";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Target, Users, Zap } from 'lucide-react';
+
+const values = [
+    {
+        icon: Users,
+        title: 'Community',
+        description: 'We foster a welcoming and inclusive environment for runners of all levels.',
+    },
+    {
+        icon: Zap,
+        title: 'Performance',
+        description: 'We support each other in achieving personal fitness goals, from 5ks to marathons.',
+    },
+    {
+        icon: Target,
+        title: 'Persistence',
+        description: 'We believe in the power of consistency and the mental strength built through running.',
+    }
+];
+
 
 export default function HomePage() {
   // Place your video file in the `public` folder and update the path here.
   // For example, if your video is named `my-video.mp4`, the path would be "/my-video.mp4"
   const videoUrl = "/hero-video.mp4";
+  const aboutImage = PlaceHolderImages.find(p => p.id === 'about');
 
   return (
     <div className="flex flex-col">
@@ -51,6 +75,93 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* About Section */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
+                <div className="space-y-4">
+                    <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                        More Than Just a Run
+                    </h2>
+                    <p className="mt-4 text-lg text-muted-foreground">
+                        Inertia Run Club was founded in 2018 with a simple mission: to bring together students who share a passion for running. We believe that running is not just a sport, but a way to build character, forge friendships, and explore the world around us.
+                    </p>
+                    <p className="text-lg text-muted-foreground">
+                        We are a community that supports each other, from the first step to the finish line.
+                    </p>
+                    <Button asChild size="lg" variant="link" className="pl-0">
+                        <Link href="/about">Learn More About Us &rarr;</Link>
+                    </Button>
+                </div>
+                <div className="relative h-96 w-full overflow-hidden rounded-lg shadow-xl">
+                    {aboutImage && (
+                        <Image
+                            src={aboutImage.imageUrl}
+                            alt={aboutImage.description}
+                            data-ai-hint={aboutImage.imageHint}
+                            fill
+                            className="object-cover"
+                        />
+                    )}
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events Section */}
+      <section className="bg-card py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
+                <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                    Upcoming Runs
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                    Lace up your shoes and join us for our next adventure.
+                </p>
+            </div>
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                {events.slice(0, 3).map((event) => (
+                    <EventCard key={event.id} event={event} />
+                ))}
+            </div>
+            <div className="mt-12 text-center">
+                <Button asChild size="lg">
+                    <Link href="/events">View All Events</Link>
+                </Button>
+            </div>
+        </div>
+      </section>
+
+      {/* Why Join Us Section */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
+                <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+                    Why Run With Inertia?
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                    We're more than a club; we're a movement. Here's what we're all about.
+                </p>
+            </div>
+            <div className="mt-12 grid max-w-lg mx-auto gap-10 lg:max-w-none lg:grid-cols-3 lg:gap-8">
+                {values.map((value) => (
+                    <div key={value.title} className="flex flex-col items-center text-center">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <value.icon className="h-8 w-8" />
+                        </div>
+                        <div className="mt-4">
+                            <h3 className="text-xl font-bold">{value.title}</h3>
+                            <p className="mt-2 text-muted-foreground">
+                                {value.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+      </section>
+
     </div>
   );
 }
