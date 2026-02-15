@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { EventCard } from "@/components/event-card";
-import { events, galleryImages } from "@/lib/data";
+import { events } from "@/lib/data";
 import { Target, Users, Zap } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
@@ -29,6 +29,16 @@ export default function HomePage() {
   // Place your video file in the `public` folder and update the path here.
   // For example, if your video is named `my-video.mp4`, the path would be "/my-video.mp4"
   const videoUrl = "/hero-video.mp4";
+
+  // Assumes your images are in `public/imge` and are named image1.jpg, image2.jpg, etc.
+  // Please update the `imageUrl` with the correct file paths.
+  const sundayRunImages = [
+    { id: 'sunday-run-1', imageUrl: '/imge/image1.jpg', description: 'Inertia run club members running together on a sunny morning.', imageHint: 'runners group' },
+    { id: 'sunday-run-2', imageUrl: '/imge/image2.jpg', description: 'A scenic view from the Sunday run path.', imageHint: 'scenic view' },
+    { id: 'sunday-run-3', imageUrl: '/imge/image3.jpg', description: 'Runners warming up and stretching before the event.', imageHint: 'runners warming up' },
+    { id: 'sunday-run-4', imageUrl: '/imge/image4.jpg', description: 'A picture of the beautiful running trail.', imageHint: 'running trail' },
+    { id: 'sunday-run-5', imageUrl: '/imge/image5.jpg', description: 'Club members celebrating after a successful run.', imageHint: 'runners celebrating' },
+  ];
 
   return (
     <div className="flex flex-col">
@@ -124,7 +134,7 @@ export default function HomePage() {
                 </div>
                 <Carousel className="w-full" opts={{ loop: true }}>
                     <CarouselContent>
-                        {galleryImages.slice(0, 5).map((image) => (
+                        {sundayRunImages.map((image) => (
                             <CarouselItem key={image.id}>
                                 <div className="relative h-96 w-full overflow-hidden rounded-lg shadow-xl">
                                     <Image
