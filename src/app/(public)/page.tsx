@@ -15,7 +15,7 @@ export default function HomePage() {
           loop
           muted
           playsInline
-          className="absolute top-1/2 left-1/2 w-full h-full object-cover transform -translate-x-1/2 -translate-y-1/2 z-0"
+          className="absolute inset-0 z-0 h-full w-full object-cover"
         >
           <source
             src={videoUrl}
