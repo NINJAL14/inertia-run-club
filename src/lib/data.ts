@@ -1,4 +1,4 @@
-import type { Event, WeeklyUpdate, GalleryImage } from "@/lib/types";
+import type { Event, WeeklyUpdate, GalleryImage, TeamMember } from "@/lib/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export const events: Event[] = [
@@ -48,6 +48,30 @@ export const weeklyUpdates: WeeklyUpdate[] = [
     content: "Starting next month, we're introducing a new casual social run every Wednesday evening. It's a great opportunity to meet other members, chat, and enjoy a relaxed pace. We'll end at a local cafe for coffee and snacks. More details on the events page!",
     createdAt: "2024-08-16T09:00:00Z",
   },
+];
+
+export const teamMembers: TeamMember[] = [
+  {
+    id: "akshitRanjith",
+    name: "Akshit Ranjith",
+    role: "President & Co-Founder",
+    image: PlaceHolderImages.find(p => p.id === "akshitRanjith")!.imageUrl,
+    imageHint: PlaceHolderImages.find(p => p.id === "akshitRanjith")!.imageHint,
+  },
+  {
+    id: "crew1",
+    name: "Jane Doe",
+    role: "Vice President",
+    image: PlaceHolderImages.find(p => p.id === "crew1")!.imageUrl,
+    imageHint: PlaceHolderImages.find(p => p.id === "crew1")!.imageHint,
+  },
+  {
+    id: "crew2",
+    name: "John Smith",
+    role: "Community Manager",
+    image: PlaceHolderImages.find(p => p.id === "crew2")!.imageUrl,
+    imageHint: PlaceHolderImages.find(p => p.id === "crew2")!.imageHint,
+  }
 ];
 
 export const galleryImages: GalleryImage[] = PlaceHolderImages.filter(p => p.id.startsWith("gallery"));
