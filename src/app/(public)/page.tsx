@@ -3,8 +3,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
-  // You can replace this with the URL of your own video
-  const videoUrl = "https://videos.pexels.com/video-files/852395/852395-hd_1920_1080_25fps.mp4";
+  // Place your video file in the `public` folder and update the path here.
+  // For example, if your video is named `my-video.mp4`, the path would be "/my-video.mp4"
+  const videoUrl = "/hero-video.mp4";
 
   return (
     <div className="flex flex-col">
