@@ -27,7 +27,7 @@ export function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center">
-            <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} className="dark:invert" />
+            <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} className="dark:mix-blend-lighten" />
           </Link>
           <nav className="hidden items-center gap-6 text-sm md:flex">
             {navItems.map((item) => (
@@ -59,7 +59,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
               <Link href="/" className="mr-6 flex items-center">
-                <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} className="dark:invert" />
+                <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} className="dark:mix-blend-lighten" />
               </Link>
               <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
                 <div className="flex flex-col space-y-3">

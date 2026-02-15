@@ -71,7 +71,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
           <div className="mb-4 flex justify-center">
-            <Image src="/logo.png" alt="Inertia Logo" width={150} height={65} className="dark:invert" />
+            <Image src="/logo.png" alt="Inertia Logo" width={150} height={65} className="dark:mix-blend-lighten" />
           </div>
           <CardTitle className="text-2xl">Admin Login</CardTitle>
           <CardDescription>
