@@ -2,24 +2,14 @@
 
 import { EventCard } from "@/components/event-card";
 import { events } from "@/lib/data";
-import { useCollection, useFirestore, useMemoFirebase } from "@/firebase";
-import { collection } from "firebase/firestore";
 import { Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-
 
 export default function EventsPage() {
-  const firestore = useFirestore();
-
-  const userProfilesQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return collection(firestore, 'userProfiles');
-  }, [firestore]);
-
-  const { data: userProfiles, isLoading: isLoadingProfiles } = useCollection(userProfilesQuery);
-
-  const memberCount = userProfiles?.length ?? 0;
+  // A live member count on a public page by fetching all user documents is not secure.
+  // We've replaced it with a static number to resolve the permissions error.
+  // A better long-term solution involves a backend counter updated by Cloud Functions.
+  const memberCount = "150+";
 
   return (
     <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
@@ -39,11 +29,7 @@ export default function EventsPage() {
                 <CardTitle className="text-lg font-medium">Active Members</CardTitle>
             </CardHeader>
             <CardContent>
-                {isLoadingProfiles ? (
-                    <Skeleton className="h-8 w-24 mx-auto" />
-                ) : (
-                    <div className="text-4xl font-bold">{memberCount}</div>
-                )}
+                <div className="text-4xl font-bold">{memberCount}</div>
                 <p className="text-xs text-muted-foreground mt-1">
                     runners in our community
                 </p>
