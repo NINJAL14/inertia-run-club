@@ -34,7 +34,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3 text-lg font-bold uppercase tracking-wider">
-          <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:invert" />
+          <span className="font-headline text-3xl italic text-primary">I</span>
           <span className="hidden sm:inline">Inertia Run Club</span>
         </Link>
         
@@ -81,7 +81,7 @@ export function Header() {
                     </SheetTrigger>
                     <SheetContent side="left" className="pr-0">
                     <Link href="/" className="mr-6 flex items-center gap-3">
-                        <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:invert" />
+                        <span className="font-headline text-3xl italic text-primary">I</span>
                         <span className="font-bold uppercase tracking-wider">Inertia Run Club</span>
                     </Link>
                     <div className="my-8 flex flex-col space-y-5 pl-6">
