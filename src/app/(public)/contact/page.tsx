@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Twitter, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 
@@ -9,9 +9,8 @@ const contactDetails = [
 ];
 
 const socialLinks = [
-  { icon: Twitter, href: "#", name: "Twitter" },
-  { icon: Instagram, href: "#", name: "Instagram" },
-  { icon: Facebook, href: "#", name: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/inertiarunclub/", name: "Instagram" },
+  { icon: Linkedin, href: "https://in.linkedin.com/company/inertia-run-club", name: "LinkedIn" },
 ];
 
 export default function ContactPage() {
@@ -52,7 +51,7 @@ export default function ContactPage() {
              <p className="text-muted-foreground">Stay connected with our community on social media for the latest updates, event photos, and more.</p>
              <div className="flex space-x-4">
                 {socialLinks.map((social) => (
-                     <Link key={social.name} href={social.href} className="text-muted-foreground hover:text-primary">
+                     <Link key={social.name} href={social.href} className="text-muted-foreground hover:text-primary" target="_blank" rel="noopener noreferrer">
                         <social.icon className="h-8 w-8" />
                         <span className="sr-only">{social.name}</span>
                      </Link>

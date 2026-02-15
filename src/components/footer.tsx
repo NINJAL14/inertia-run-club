@@ -1,11 +1,9 @@
-import { Twitter, Instagram, Facebook, Youtube } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 const socialLinks = [
-  { icon: Twitter, href: "#", name: "Twitter" },
-  { icon: Instagram, href: "#", name: "Instagram" },
-  { icon: Facebook, href: "#", name: "Facebook" },
-  { icon: Youtube, href: "#", name: "YouTube" },
+  { icon: Instagram, href: "https://www.instagram.com/inertiarunclub/", name: "Instagram" },
+  { icon: Linkedin, href: "https://in.linkedin.com/company/inertia-run-club", name: "LinkedIn" },
 ];
 
 export function Footer() {
