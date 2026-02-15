@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useUser } from "@/firebase";
 import { UserButton } from "@/components/auth/user-button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const navItems = [
   { href: "/", label: "HOME" },
@@ -23,12 +24,7 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setSheetOpen] = React.useState(false);
-  const { user } = useUser();
-  const [isMounted, setIsMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const { user, isUserLoading } = useUser();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
@@ -62,14 +58,14 @@ export function Header() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            {isMounted && (
-                user ? (
-                <UserButton />
-                ) : (
-                <Button asChild>
-                    <Link href="/login">Login</Link>
-                </Button>
-                )
+            {isUserLoading ? (
+              <Skeleton className="h-10 w-20" />
+            ) : user ? (
+              <UserButton />
+            ) : (
+              <Button asChild>
+                <Link href="/login">Login</Link>
+              </Button>
             )}
            </div>
         </div>
@@ -111,22 +107,24 @@ export function Header() {
                     </Link>
                     ))}
                     <div className="mt-4">
-                        {isMounted && (
-                          <>
-                            {user ? (
-                                <UserButton />
-                              ) : (
-                                <Button asChild>
-                                  <Link href="/login" onClick={() => setSheetOpen(false)}>Login</Link>
-                                </Button>
-                              )}
-                          </>
+                      {isUserLoading ? (
+                        <Skeleton className="h-10 w-24" />
+                      ) : user ? (
+                          <UserButton />
+                        ) : (
+                          <Button asChild>
+                            <Link href="/login" onClick={() => setSheetOpen(false)}>Login</Link>
+                          </Button>
                         )}
                     </div>
                 </div>
                 </SheetContent>
             </Sheet>
-            {isMounted && user && <UserButton />}
+            {isUserLoading ? (
+              <Skeleton className="h-8 w-8 rounded-full" />
+            ) : user ? (
+              <UserButton />
+            ) : null}
         </div>
       </div>
     </header>
