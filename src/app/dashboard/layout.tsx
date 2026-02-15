@@ -47,7 +47,7 @@ export default function DashboardLayout({
         <SidebarHeader>
           <div className="flex items-center justify-center p-2">
             <Link href="/">
-              <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} className="dark:brightness-0 dark:invert" />
+              <Image src="/logo.png" alt="Inertia Logo" width={100} height={28} className="dark:invert" />
             </Link>
           </div>
         </SidebarHeader>

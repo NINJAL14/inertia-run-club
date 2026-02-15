@@ -26,36 +26,39 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3 text-lg font-bold uppercase tracking-wider">
-          <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:brightness-0 dark:saturate-[0%] dark:invert-[1]" />
+          <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:invert" />
           <span className="hidden sm:inline">Inertia Run Club</span>
         </Link>
         
-        <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "transition-colors hover:text-primary pb-1 uppercase",
-                pathname === item.href
-                  ? "text-primary border-b-2 border-primary"
-                  : "text-foreground/70"
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-8 md:flex">
+          <nav className="flex items-center gap-8 text-sm font-medium">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "transition-colors hover:text-primary pb-1 uppercase",
+                  pathname === item.href
+                    ? "text-primary border-b-2 border-primary"
+                    : "text-foreground/70"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-        <div className="flex items-center gap-2">
-            <Button asChild className="hidden md:inline-flex">
-                <Link href="/events">JOIN A RUN</Link>
-            </Button>
+          <Button asChild>
+            <Link href="/events">JOIN A RUN</Link>
+          </Button>
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
             <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
                 <SheetTrigger asChild>
                 <Button
                     variant="ghost"
-                    className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+                    className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
                 >
                     <Menu className="h-6 w-6" />
                     <span className="sr-only">Toggle Menu</span>
@@ -63,7 +66,7 @@ export function Header() {
                 </SheetTrigger>
                 <SheetContent side="left" className="pr-0">
                 <Link href="/" className="mr-6 flex items-center gap-3">
-                    <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:brightness-0 dark:saturate-[0%] dark:invert-[1]" />
+                    <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:invert" />
                     <span className="font-bold uppercase tracking-wider">Inertia Run Club</span>
                 </Link>
                 <div className="my-8 flex flex-col space-y-5 pl-6">
