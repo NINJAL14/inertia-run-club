@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         hostname: 'content3.jdmagicbox.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

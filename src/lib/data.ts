@@ -55,7 +55,7 @@ export const teamMembers: TeamMember[] = [
     id: "akshitRanjith",
     name: "Akshit Ranjith",
     role: "President & Co-Founder",
-    image: PlaceHolderImages.find(p => p.id === "team_akshit")!.imageUrl,
+    image: "https://media.licdn.com/dms/image/v2/D4D22AQGPcjFbOpG17w/feedshare-shrink_1280/B4DZqLx0TZJcAw-/0/1763281684454?e=1772668800&v=beta&t=LjRr8lhcpB4ATlDtuK4pdoukvcA6ikuV7RTtPvxQqnk",
   },
   {
     id: "janeDoe",
