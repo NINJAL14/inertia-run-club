@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -33,9 +34,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
       <div className="container flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 text-lg font-bold uppercase tracking-wider">
-          <span className="font-headline text-3xl italic text-primary">I</span>
-          <span className="hidden sm:inline">Inertia Run Club</span>
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="https://media.licdn.com/dms/image/v2/D4D0BAQGO94jx0uVImA/company-logo_100_100/B4DZqLRmjEHsAQ-/0/1763273239179?e=1772668800&v=beta&t=tRfiSuv_SzsLW9ABtMhtdnLFvl76jtXvXUuxfXu8HXM"
+            alt="Inertia Run Club Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <span className="hidden sm:inline text-lg font-bold uppercase tracking-wider">Inertia Run Club</span>
         </Link>
         
         <div className="hidden items-center gap-8 md:flex">
@@ -55,6 +62,7 @@ export function Header() {
               </Link>
             ))}
           </nav>
+          <div className="flex items-center gap-2">
             {isMounted && (
                 user ? (
                 <UserButton />
@@ -64,6 +72,7 @@ export function Header() {
                 </Button>
                 )
             )}
+           </div>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -81,7 +90,13 @@ export function Header() {
                     </SheetTrigger>
                     <SheetContent side="left" className="pr-0">
                     <Link href="/" className="mr-6 flex items-center gap-3">
-                        <span className="font-headline text-3xl italic text-primary">I</span>
+                         <Image
+                            src="https://media.licdn.com/dms/image/v2/D4D0BAQGO94jx0uVImA/company-logo_100_100/B4DZqLRmjEHsAQ-/0/1763273239179?e=1772668800&v=beta&t=tRfiSuv_SzsLW9ABtMhtdnLFvl76jtXvXUuxfXu8HXM"
+                            alt="Inertia Run Club Logo"
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                        />
                         <span className="font-bold uppercase tracking-wider">Inertia Run Club</span>
                     </Link>
                     <div className="my-8 flex flex-col space-y-5 pl-6">
@@ -99,7 +114,7 @@ export function Header() {
                         </Link>
                         ))}
                         <div className="mt-4">
-                            {user ? (
+                           {user ? (
                                <UserButton />
                             ) : (
                               <Button asChild>
