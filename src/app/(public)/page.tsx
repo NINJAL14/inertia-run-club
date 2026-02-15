@@ -105,22 +105,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Sunday Morning Run Section */}
       <section className="bg-card py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
                 <div className="space-y-4">
                     <h2 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
-                        More Than Just a Run
+                        Sunday Morning Run
                     </h2>
                     <p className="mt-4 text-lg text-muted-foreground">
-                        Inertia Run Club was founded in 2018 with a simple mission: to bring together students who share a passion for running. We believe that running is not just a sport, but a way to build character, forge friendships, and explore the world around us.
+                        Every Sunday, we hit the pavement for our flagship group run. It's the perfect way to kick off your week, with routes for all levels and a great community vibe. Whether you're chasing a new personal best or just looking for a friendly jog, you'll find your pace with us.
                     </p>
                     <p className="text-lg text-muted-foreground">
-                        We are a community that supports each other, from the first step to the finish line.
+                        The energy is contagious, the scenery is beautiful, and the post-run coffee is always rewarding.
                     </p>
                     <Button asChild size="lg" variant="link" className="pl-0">
-                        <Link href="/about">Learn More About Us &rarr;</Link>
+                        <Link href="/events">See All Runs &rarr;</Link>
                     </Button>
                 </div>
                 <div className="relative h-96 w-full overflow-hidden rounded-lg shadow-xl">
