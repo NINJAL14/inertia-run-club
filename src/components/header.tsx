@@ -26,7 +26,7 @@ export function Header() {
   const { user, isUserLoading } = useUser();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-sm">
       <div className="container flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center gap-3 text-lg font-bold uppercase tracking-wider">
           <Image src="/logo.png" alt="Inertia Logo" width={28} height={28} className="dark:invert" />
